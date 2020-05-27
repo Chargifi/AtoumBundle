@@ -100,7 +100,7 @@ EOF
             }
         }
 
-        $defaultBootstrap = sprintf('%s/autoload.php', $this->kernel->getProjectDir());
+        $defaultBootstrap = sprintf('%s/vendor/autoload.php', $this->kernel->getProjectDir());
         $bootstrap = $input->getOption('bootstrap-file') ? : $defaultBootstrap;
 
         $this->setAtoumArgument('--bootstrap-file', $bootstrap);
