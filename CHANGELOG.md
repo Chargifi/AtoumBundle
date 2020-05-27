@@ -46,7 +46,7 @@
 1.2.0
 =====
 
-* Adds the ability to test Symfony commands (see `atoum\AtoumBundle\Test\Units\CommandTestCase`)
+* Adds the ability to test Symfony commands (see `Atoum\AtoumBundle\Test\Units\CommandTestCase`)
 
 1.1.0
 =====

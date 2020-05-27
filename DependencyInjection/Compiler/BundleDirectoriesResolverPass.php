@@ -1,6 +1,6 @@
 <?php
 
-namespace atoum\AtoumBundle\DependencyInjection\Compiler;
+namespace Atoum\AtoumBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace atoum\AtoumBundle\Scripts;
+namespace Atoum\AtoumBundle\Scripts;
 
 use mageekguy\atoum\scripts\runner as BaseRunner;
 use mageekguy\atoum\cli;

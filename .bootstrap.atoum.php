@@ -1,5 +1,5 @@
 <?php
-namespace atoum\AtoumBundle\tests;
+namespace Atoum\AtoumBundle\tests;
 
 define(__NAMESPACE__ . '\\VENDOR', __DIR__ . '/vendor');
 

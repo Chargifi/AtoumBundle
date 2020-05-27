@@ -1,8 +1,8 @@
 <?php
 
-namespace atoum\AtoumBundle\Test\Form;
+namespace Atoum\AtoumBundle\Test\Form;
 
-use atoum\AtoumBundle\Test\Units\Test;
+use Atoum\AtoumBundle\Test\Units\Test;
 use mageekguy\atoum;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\Forms;

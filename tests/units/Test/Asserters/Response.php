@@ -1,9 +1,9 @@
 <?php
-namespace atoum\AtoumBundle\tests\units\Test\Asserters;
+namespace Atoum\AtoumBundle\tests\units\Test\Asserters;
 
 use mageekguy\atoum;
 use mageekguy\atoum\asserter;
-use atoum\AtoumBundle\Test\Asserters\Response as TestedClass;
+use Atoum\AtoumBundle\Test\Asserters\Response as TestedClass;
 
 class Response extends atoum\test
 {
@@ -211,7 +211,7 @@ class Response extends atoum\test
     public function testHasHeader()
     {
         $this
-            ->if($object = new \mock\atoum\AtoumBundle\Test\Asserters\Response($generator = new asserter\generator()))
+            ->if($object = new \mock\Atoum\AtoumBundle\Test\Asserters\Response($generator = new asserter\generator()))
             ->and($response = new \mock\Symfony\Component\HttpFoundation\Response())
             ->and($headers = new \mock\Symfony\Component\HttpFoundation\HeaderBag())
             ->and($this->calling($object)->getHeaders = $headers)

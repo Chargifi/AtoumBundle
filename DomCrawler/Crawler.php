@@ -6,7 +6,7 @@
  * Time: 21:29
  */
 
-namespace atoum\AtoumBundle\DomCrawler;
+namespace Atoum\AtoumBundle\DomCrawler;
 
 use Symfony\Component\DomCrawler;
 

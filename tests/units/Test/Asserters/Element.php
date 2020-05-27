@@ -1,10 +1,10 @@
 <?php
-namespace atoum\AtoumBundle\tests\units\Test\Asserters;
+namespace Atoum\AtoumBundle\tests\units\Test\Asserters;
 
-use atoum\AtoumBundle\Test\Asserters\Crawler as CrawlerAssert;
+use Atoum\AtoumBundle\Test\Asserters\Crawler as CrawlerAssert;
 use mageekguy\atoum;
 use mageekguy\atoum\asserter;
-use atoum\AtoumBundle\Test\Asserters\Element as TestedClass;
+use Atoum\AtoumBundle\Test\Asserters\Element as TestedClass;
 
 class Element extends atoum\test
 {

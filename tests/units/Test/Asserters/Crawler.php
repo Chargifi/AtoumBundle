@@ -1,9 +1,9 @@
 <?php
-namespace atoum\AtoumBundle\tests\units\Test\Asserters;
+namespace Atoum\AtoumBundle\tests\units\Test\Asserters;
 
 use mageekguy\atoum;
 use mageekguy\atoum\asserter;
-use atoum\AtoumBundle\Test\Asserters\Crawler as TestedClass;
+use Atoum\AtoumBundle\Test\Asserters\Crawler as TestedClass;
 
 class Crawler extends atoum\test
 {

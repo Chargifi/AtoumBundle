@@ -1,29 +1,29 @@
 <?php
 
-namespace atoum\AtoumBundle\Command;
+namespace Atoum\AtoumBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Atoum\AtoumBundle\Configuration\BundleContainer;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-use atoum\AtoumBundle\Configuration\Bundle as BundleConfiguration;
-use atoum\AtoumBundle\Scripts\Runner;
+use Atoum\AtoumBundle\Configuration\Bundle as BundleConfiguration;
+use Atoum\AtoumBundle\Scripts\Runner;
+use Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use Symfony\Component\HttpKernel\Kernel;
 
 /**
- * AtoumCommand
- *
- * @uses ContainerAwareCommand
  * @author Stephane PY <py.stephane1@gmail.com>
  */
-class AtoumCommand extends ContainerAwareCommand
+class AtoumCommand extends Command
 {
-
     /**
      * @var array List of atoum CLI runner arguments
      */
-    private $atoumArguments = array();
+    private array $atoumArguments = [];
+    private BundleContainer $atoumBundleContainer;
+    private Kernel $kernel;
 
     /**
      * {@inheritdoc}
@@ -62,6 +62,14 @@ EOF
         ;
     }
 
+    public function __construct(BundleContainer $bundleContainer, Kernel $kernel)
+    {
+        parent::__construct();
+
+        $this->atoumBundleContainer = $bundleContainer;
+        $this->kernel = $kernel;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -75,7 +83,7 @@ EOF
                 $bundles[$k] = $this->extractBundleConfigurationFromKernel($bundleName);
             }
         } else {
-            $bundles = $this->getContainer()->get('atoum.configuration.bundle.container')->all();
+            $bundles = $this->atoumBundleContainer->all();
         }
 
         foreach ($bundles as $bundle) {
@@ -92,7 +100,7 @@ EOF
             }
         }
 
-        $defaultBootstrap = sprintf('%s/autoload.php', $this->getApplication()->getKernel()->getRootDir());
+        $defaultBootstrap = sprintf('%s/autoload.php', $this->kernel->getProjectDir());
         $bootstrap = $input->getOption('bootstrap-file') ? : $defaultBootstrap;
 
         $this->setAtoumArgument('--bootstrap-file', $bootstrap);
@@ -130,6 +138,22 @@ EOF
             $reportCli->addWriter($writerCli);
         }
 
+        if ($input->getOption('loop')) {
+            $this->setAtoumArgument('--loop');
+        }
+
+        if ($input->getOption('force-terminal')) {
+            $this->setAtoumArgument('--force-terminal');
+        }
+
+        if ($input->getOption('score-file')) {
+            $this->setAtoumArgument('--score-file', $input->getOption('score-file'));
+        }
+
+        if ($input->getOption('debug')) {
+            $this->setAtoumArgument('--debug');
+        }
+
         try {
             $score = $runner->run($this->getAtoumArguments())->getRunner()->getScore();
 
@@ -147,47 +171,18 @@ EOF
 
             return $isSuccess ? 0 : 1;
         } catch (\Exception $exception) {
-            $this->getApplication()->renderException($exception, $output);
+            $this->getApplication()->renderThrowable($exception, $output);
 
             return 2;
         }
-
-        if ($input->getOption('loop')) {
-            $this->setAtoumArgument('--loop');
-        }
-
-        if ($input->getOption('force-terminal')) {
-            $this->setAtoumArgument('--force-terminal');
-        }
-
-        if ($input->getOption('score-file')) {
-            $this->setAtoumArgument('--score-file', $input->getOption('score-file'));
-        }
-
-        if ($input->getOption('debug')) {
-            $this->setAtoumArgument('--debug');
-        }
-
-        $runner->run($this->getAtoumArguments());
     }
 
-    /**
-     * Set an atoum CLI argument
-     *
-     * @param string $name
-     * @param string $values
-     */
-    protected function setAtoumArgument($name, $values = null)
+    protected function setAtoumArgument(string $name, string $values = null)
     {
         $this->atoumArguments[$name] = $values;
     }
 
-    /**
-     * Return inlined atoum cli arguments
-     *
-     * @return array
-     */
-    protected function getAtoumArguments()
+    protected function getAtoumArguments(): array
     {
         $inlinedArguments = array();
 
@@ -202,15 +197,13 @@ EOF
     }
 
     /**
-     * @param string $name name
+     * @param string $name
      *
-     * @throws \LogicException
-     *
-     * @return BundleConfiguration
+     * @return \Atoum\AtoumBundle\Configuration\Bundle
      */
-    public function extractBundleConfigurationFromKernel($name)
+    public function extractBundleConfigurationFromKernel(string $name): BundleConfiguration
     {
-        $kernelBundles = $this->getContainer()->get('kernel')->getBundles();
+        $kernelBundles = $this->kernel->getBundles();
         $bundle = null;
 
         if (preg_match('/Bundle$/', $name)) {
@@ -234,7 +227,7 @@ EOF
             }
         }
 
-        $bundleContainer = $this->getContainer()->get('atoum.configuration.bundle.container');
+        $bundleContainer = $this->atoumBundleContainer;
 
         if ($bundleContainer->has($bundle->getName())) {
             return $bundleContainer->get($bundle->getName());
@@ -243,12 +236,7 @@ EOF
         }
     }
 
-    /**
-     * @param Bundle $bundle bundle
-     *
-     * @return array
-     */
-    public function getDefaultDirectoriesForBundle(Bundle $bundle)
+    public function getDefaultDirectoriesForBundle(BundleInterface $bundle): array
     {
         return array(
             sprintf('%s/Tests/Units', $bundle->getPath()),

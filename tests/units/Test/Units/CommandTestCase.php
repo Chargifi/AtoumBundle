@@ -1,6 +1,6 @@
 <?php
 
-namespace atoum\AtoumBundle\tests\units\Test\Units;
+namespace Atoum\AtoumBundle\tests\units\Test\Units;
 
 use mageekguy\atoum;
 
@@ -22,7 +22,7 @@ class CommandTestCase extends atoum\test
                 $kernel->getMockController()->getBundles = array(),
                 $kernel->getMockController()->getContainer = $container,
                 $application = new \mock\Symfony\Bundle\FrameworkBundle\Console\Application($kernel),
-                $object = new \mock\atoum\AtoumBundle\Test\Units\CommandTestCase(),
+                $object = new \mock\Atoum\AtoumBundle\Test\Units\CommandTestCase(),
                 $object->getMockController()->getKernel = $kernel
             )
             ->if($commandTester = $object->createCommandTester($command))

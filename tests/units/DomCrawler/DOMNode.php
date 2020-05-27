@@ -1,9 +1,9 @@
 <?php
-namespace atoum\AtoumBundle\tests\units\DomCrawler;
+namespace Atoum\AtoumBundle\tests\units\DomCrawler;
 
 use mageekguy\atoum;
-use atoum\AtoumBundle\DomCrawler\Crawler;
-use atoum\AtoumBundle\DomCrawler\DOMNode as TestedClass;
+use Atoum\AtoumBundle\DomCrawler\Crawler;
+use Atoum\AtoumBundle\DomCrawler\DOMNode as TestedClass;
 
 class DOMNode extends atoum\test
 {

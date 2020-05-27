@@ -16,26 +16,20 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
+        "php": "^7.4 || ^8.0",
         "symfony/framework-bundle": ">=2.3.0|^3.0",
-        "symfony/console": ">=2.3.0|^3.0",
-        "symfony/finder": ">=2.3.0|^3.0",
-        "symfony/dom-crawler": ">=2.3.0|^3.0",
-        "symfony/css-selector": ">=2.3.0|^3.0",
-        "atoum/atoum": "^3.1.1",
+        "symfony/console": "^5.0",
+        "symfony/finder": "^5.0",
+        "symfony/dom-crawler": "^5.0",
+        "symfony/css-selector": "^5.0",
+        "atoum/atoum": "^3.4",
         "fzaninotto/faker": "1.*"
     },
     "require-dev": {
-        "symfony/form": "2.*"
+        "symfony/form": "^5.0"
     },
     "autoload": {
-        "psr-0": {
-            "atoum\\AtoumBundle": ""
-        }
-    },
-    "target-dir": "atoum/AtoumBundle",
-    "config": {
-        "bin-dir": "bin"
+        "psr-4": { "Atoum\\AtoumBundle\\": "" }
     },
     "extra": {
         "branch-alias": {

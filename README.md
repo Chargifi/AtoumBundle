@@ -38,7 +38,7 @@ You have to define AtoumBundle on `AppKernel`
 ```php
 if (in_array($this->getEnvironment(), array('dev', 'test'))) {
     //.....
-    $bundles[] = new atoum\AtoumBundle\AtoumAtoumBundle();
+    $bundles[] = new Atoum\AtoumBundle\AtoumAtoumBundle();
 }
 ```
 
@@ -68,7 +68,7 @@ $ php app/console atoum --env=test # launch tests from configuration.
 
 ## Simple Usage
 
-Make your test class extend the ```atoum\AtoumBundle\Test\Units\Test``` class of the bundle.
+Make your test class extend the ```Atoum\AtoumBundle\Test\Units\Test``` class of the bundle.
 
 *Don't forget to load this class with your favorite method (require, autoload, ...) if you don't use composer.*
 
@@ -84,7 +84,7 @@ namespace Acme\MyBundle\Tests\Units\Entity;
 // use path of the atoum.phar as bellow if you don't want to use atoum via composer
 //require_once __DIR__ . '/../../../../../vendor/mageekguy.atoum.phar';
 
-use atoum\AtoumBundle\Test\Units;
+use Atoum\AtoumBundle\Test\Units;
 
 class helloWorld extends Units\Test
 {
@@ -100,7 +100,7 @@ You can easily create a kernel environment:
 
 require __DIR__ . '/../../../../../../../app/autoload.php';
 
-use atoum\AtoumBundle\Test\Units;
+use Atoum\AtoumBundle\Test\Units;
 
 class helloWorld extends Units\WebTestCase
 {
@@ -120,9 +120,9 @@ You can also easily test a command:
 
 namespace My\Bundle\FoobarBundle\Tests\Units\Command;
 
-use atoum\AtoumBundle\Test\Units as AtoumBundle;
+use Atoum\AtoumBundle\Test\Units as AtoumBundle;
 use mageekguy\atoum;
-use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
 // Assuming that this command will display "Success" if succes, and returns a boolean
@@ -161,8 +161,8 @@ You can test your controller with the ```ControllerTest``` class (it extends `We
 
 namespace vendor\FooBundle\Tests\Controller;
 
-use atoum\AtoumBundle\Test\Units\WebTestCase;
-use atoum\AtoumBundle\Test\Controller\ControllerTest;
+use Atoum\AtoumBundle\Test\Units\WebTestCase;
+use Atoum\AtoumBundle\Test\Controller\ControllerTest;
 
 class BarController extends ControllerTest
 {
@@ -219,7 +219,7 @@ first example atoum-translated :
 namespace Acme\DemoBundle\Tests\Form;
 
 use Acme\DemoBundle\Entity\TestEntity;
-use atoum\AtoumBundle\Test\Form;
+use Atoum\AtoumBundle\Test\Form;
 use Acme\DemoBundle\Form\TestEntityType as MyTypeToTest;
 
 class TestEntityType extends Form\FormTestCase{

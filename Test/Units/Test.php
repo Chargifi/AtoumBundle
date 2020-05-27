@@ -1,6 +1,6 @@
 <?php
 
-namespace atoum\AtoumBundle\Test\Units;
+namespace Atoum\AtoumBundle\Test\Units;
 
 use Faker;
 use mageekguy\atoum;

@@ -1,8 +1,8 @@
 <?php
 
-namespace atoum\AtoumBundle\Test\Asserters;
+namespace Atoum\AtoumBundle\Test\Asserters;
 
-use atoum\AtoumBundle\DomCrawler\DOMNode;
+use Atoum\AtoumBundle\DomCrawler\DOMNode;
 use mageekguy\atoum;
 use mageekguy\atoum\tools;
 use mageekguy\atoum\asserter;
@@ -11,7 +11,7 @@ use Symfony\Component\DomCrawler\Crawler as DomCrawler;
 
 class Element extends Crawler
 {
-    /** @var \atoum\AtoumBundle\Test\Asserters\Crawler  */
+    /** @var \Atoum\AtoumBundle\Test\Asserters\Crawler  */
     private $parent;
 
     /** @var string */

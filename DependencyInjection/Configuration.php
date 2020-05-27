@@ -1,14 +1,11 @@
 <?php
 
-namespace atoum\AtoumBundle\DependencyInjection;
+namespace Atoum\AtoumBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * Configuration
- *
- * @uses ConfigurationInterface
  * @author Stephane PY <py.stephane1@gmail.com>
  */
 class Configuration implements ConfigurationInterface
@@ -18,23 +15,22 @@ class Configuration implements ConfigurationInterface
      *
      * @return TreeBuilder The tree builder
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $tb = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('atoum_atoum');
 
-        return $tb
-            ->root('atoum_atoum')
-                ->children()
-                    ->arrayNode('bundles')
-                        ->useAttributeAsKey('name')
-                        ->prototype('array')
-                            ->children()
-                                ->arrayNode('directories')
-                                    ->defaultValue(array(
-                                        'Tests/Units', 'Tests/Controller',
-                                    ))
-                                    ->prototype('scalar')
-                                    ->end()
+        return $treeBuilder->getRootNode()
+            ->children()
+                ->arrayNode('bundles')
+                    ->useAttributeAsKey('name')
+                    ->prototype('array')
+                        ->children()
+                            ->booleanNode('is_bundle')->defaultTrue()->end()
+                            ->arrayNode('directories')
+                                ->defaultValue(array(
+                                    'Tests/Units', 'Tests/Controller',
+                                ))
+                                ->prototype('scalar')
                                 ->end()
                             ->end()
                         ->end()

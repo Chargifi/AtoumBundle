@@ -1,6 +1,6 @@
 <?php
 
-namespace atoum\AtoumBundle\Test\Units;
+namespace Atoum\AtoumBundle\Test\Units;
 
 use Symfony\Bundle\FrameworkBundle\Client;
 use mageekguy\atoum;
@@ -13,14 +13,14 @@ use Symfony\Component\CssSelector\CssSelector;
  * @author Stephane PY <py.stephane1@gmail.com>
  *
  * @method WebTestCase request(array $options = array(), array $server = array(), array $cookies = array())
- * @method \atoum\AtoumBundle\Test\Asserters\Response get($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Response head($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Response post($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Response put($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Response patch($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Response delete($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Response options($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Crawler crawler($strict = false)
+ * @method \Atoum\AtoumBundle\Test\Asserters\Response get($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
+ * @method \Atoum\AtoumBundle\Test\Asserters\Response head($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
+ * @method \Atoum\AtoumBundle\Test\Asserters\Response post($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
+ * @method \Atoum\AtoumBundle\Test\Asserters\Response put($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
+ * @method \Atoum\AtoumBundle\Test\Asserters\Response patch($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
+ * @method \Atoum\AtoumBundle\Test\Asserters\Response delete($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
+ * @method \Atoum\AtoumBundle\Test\Asserters\Response options($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
+ * @method \Atoum\AtoumBundle\Test\Asserters\Crawler crawler($strict = false)
  */
 abstract class WebTestCase extends Test
 {

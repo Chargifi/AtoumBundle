@@ -1,6 +1,6 @@
 <?php
 
-namespace atoum\AtoumBundle\Test\Units;
+namespace Atoum\AtoumBundle\Test\Units;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Bundle\FrameworkBundle\Console\Application;

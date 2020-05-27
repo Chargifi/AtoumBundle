@@ -1,6 +1,6 @@
 <?php
 
-namespace atoum\AtoumBundle\Configuration;
+namespace Atoum\AtoumBundle\Configuration;
 
 /**
  * BundleContainer

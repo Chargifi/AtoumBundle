@@ -1,6 +1,6 @@
 <?php
 
-namespace atoum\AtoumBundle\Test\Asserters;
+namespace Atoum\AtoumBundle\Test\Asserters;
 
 use mageekguy\atoum;
 use mageekguy\atoum\asserters;

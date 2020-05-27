@@ -1,46 +1,35 @@
 <?php
 
-namespace atoum\AtoumBundle\Configuration;
+namespace Atoum\AtoumBundle\Configuration;
 
 /**
- * Bundle
- *
  * @author Stephane PY <py.stephane1@gmail.com>
  */
 class Bundle
 {
-    /**
-     * @var string
-     */
-    protected $name;
+    protected string $name;
+
+    protected array $directories = [];
 
     /**
-     * @var array
+     * @param string $name name
+     * @param string[] $directories directories
      */
-    protected $directories = array();
-
-    /**
-     * @param string $name        name
-     * @param array  $directories directories
-     */
-    public function __construct($name, array $directories)
+    public function __construct(string $name, array $directories)
     {
-        $this->name        = $name;
+        $this->name = $name;
         $this->directories = $directories;
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * @return array
+     * @return string[]
      */
-    public function getDirectories()
+    public function getDirectories(): array
     {
         return $this->directories;
     }
