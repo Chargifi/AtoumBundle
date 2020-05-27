@@ -19,7 +19,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('atoum_atoum');
 
-        return $treeBuilder->getRootNode()
+        $treeBuilder->getRootNode()
             ->children()
                 ->arrayNode('bundles')
                     ->useAttributeAsKey('name')
@@ -38,5 +38,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
         ;
+
+        return $treeBuilder;
     }
 }
